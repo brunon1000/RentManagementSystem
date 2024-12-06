@@ -14,19 +14,26 @@ public class Renter {
         return results;
     }
 
-    public boolean rentProperty(Property property) {
-        if (property.isAvailable()) {
-            property.setAvailable(false);
-            return true;
+    public String viewPropertyDetails(Property property) {
+        if (property == null) {
+            return "Property not found.";
         }
-        return false;
+        return property.toString();
     }
 
-    public boolean stopRental(Property property) {
+    public String rentProperty(Property property) {
+        if (property.isAvailable()) {
+            property.setAvailable(false);
+            return "Property rented successfully.";
+        }
+        return "Property is not available for rent.";
+    }
+
+    public String stopRental(Property property) {
         if (!property.isAvailable()) {
             property.setAvailable(true);
-            return true;
+            return "Rental terminated successfully.";
         }
-        return false;
+        return "Property is already available.";
     }
 }
