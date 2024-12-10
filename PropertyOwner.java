@@ -40,18 +40,22 @@ public class PropertyOwner {
         StringBuilder report = new StringBuilder();
         double totalIncome = 0;
 
-        report.append("Property ID,Location,Rent,Available\n");
+        // Start the report with headers
+        report.append("Property ID,Location,Rent,Availability\n");
+
+        // Iterate over properties to include only rented ones
         for (Property property : properties) {
-            if (!property.isAvailable()) {
+            if (!property.isAvailable()) { // Property is rented
                 report.append(property.getPropertyId()).append(",")
                       .append(property.getLocation()).append(",")
                       .append(property.getRent()).append(",")
                       .append("Rented").append("\n");
-                totalIncome += property.getRent();
+                totalIncome += property.getRent(); // Summing up the rent for rented properties
             }
         }
 
-        report.append("\nTotal Rental Income: $").append(totalIncome);
+        // Add total income to the end of the report
+        report.append("\nTotal Rental Income: $").append(String.format("%.2f", totalIncome));
         return report.toString();
     }
 
