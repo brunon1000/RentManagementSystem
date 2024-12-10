@@ -5,16 +5,17 @@ import java.util.List;
 
 public class PropertyOwner {
     private List<Property> properties;
+    private int propertiesTotal = 0;
 
     public PropertyOwner() {
         properties = new ArrayList<>();
     }
 
     public int addProperty(String location, double rent, String amenities) {
-        int propertyId = properties.size() + 1;
-        Property newProperty = new Property(propertyId, location, rent, amenities);
+        propertiesTotal += 1;
+        Property newProperty = new Property(propertiesTotal, location, rent, amenities);
         properties.add(newProperty);
-        return propertyId;
+        return propertiesTotal;
     }
 
     public String modifyProperty(int propertyId, String location, Double rent, String amenities) {
