@@ -5,10 +5,11 @@ import java.util.List;
 
 public class PropertyOwner {
     private List<Property> properties;
-    private int propertiesTotal = 0;
+    private int propertiesTotal;
 
     public PropertyOwner() {
         properties = new ArrayList<>();
+        propertiesTotal = 0;
     }
 
     public int addProperty(String location, double rent, String amenities) {
