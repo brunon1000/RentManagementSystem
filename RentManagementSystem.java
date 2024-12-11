@@ -25,17 +25,8 @@ public class RentManagementSystem {
         JButton propertyOwnerButton = new JButton("Property Owner");
         JButton renterButton = new JButton("Renter");
 
-        propertyOwnerButton.addActionListener(e -> {
-            mainFrame.dispose();
-            PropertyOwnerMenu propertyOwnerMenu = new PropertyOwnerMenu(propertyOwner);
-            propertyOwnerMenu.show();
-        });
-
-        renterButton.addActionListener(e -> {
-            mainFrame.dispose();
-            RenterMenu renterMenu = new RenterMenu(propertyOwner, renter);
-            renterMenu.show();
-        });
+        propertyOwnerButton.addActionListener(e -> openPropertyOwnerMenu(mainFrame));
+        renterButton.addActionListener(e -> openRenterMenu(mainFrame));
 
         JPanel panel = new JPanel();
         panel.add(propertyOwnerButton);
@@ -43,5 +34,17 @@ public class RentManagementSystem {
 
         mainFrame.add(panel);
         mainFrame.setVisible(true);
+    }
+
+    private void openPropertyOwnerMenu(JFrame mainFrame){
+        mainFrame.dispose();
+        PropertyOwnerMenu propertyOwnerMenu = new PropertyOwnerMenu(propertyOwner);
+        propertyOwnerMenu.show();
+    }
+
+    private void openRenterMenu(JFrame mainFrame){
+        mainFrame.dispose();
+        RenterMenu renterMenu = new RenterMenu(propertyOwner, renter);
+        renterMenu.show();
     }
 }
